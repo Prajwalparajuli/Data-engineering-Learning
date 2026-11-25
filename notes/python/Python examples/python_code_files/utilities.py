@@ -44,7 +44,7 @@ if __name__ == '__main__':
     min_number(numbers)
     #
     # # Maximum number from the list
-    # max_number(numbers)
+    max_number(numbers)
     #
     # # Even and odd numbers from the list
     # even_odd_numbers(numbers)

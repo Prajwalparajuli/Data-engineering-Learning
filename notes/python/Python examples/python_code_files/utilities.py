@@ -36,6 +36,19 @@ def even_odd_numbers(list):
 
     return f'Even numbers in the list = {even_nums} and Odd numbers in the list = {odd_nums}'
 
+
+def count_occurances(list):
+    dict = {}
+
+    for n in list:
+        if n in dict:
+            dict[n] = dict[n] + 1
+        else:
+            dict[n] = 1
+
+    return f'Occurances of number in the list are as follows\n {dict}'
+
+
 if __name__ == '__main__':
 
     numbers = [5,6,2,3,4,4]

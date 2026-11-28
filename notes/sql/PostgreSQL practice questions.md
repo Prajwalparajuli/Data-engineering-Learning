@@ -169,7 +169,7 @@ JOIN orders o ON od.order_id = o.order_id
 JOIN products p ON od.product_id = p.product_id
 GROUP BY od.order_id, o.order_date
 ORDER BY line_value DESC
-LIMIT 10
+LIMIT 10;
 ```
 
 14. **Units ordered by category.** Sum the quantities recorded in `order_details` for each catalog category. Include all categories and show zero when there are no quantities to sum. Return category ID, name, and total units. Sort by units descending, then category ID ascending.
@@ -180,7 +180,7 @@ FROM order_details od
 JOIN products p ON od.product_id = p.product_id
 JOIN categories c ON p.category_id = c.category_id
 GROUP BY c.category_id, c.category_name
-ORDER BY total_units DESC, c.category_id ASC
+ORDER BY total_units DESC, c.category_id ASC;
 ```
 
 15. **Price bands.** Classify priced products as Budget (below 10), Standard (10 up to but excluding 30), or Premium (30 or above). Return the number of products in each populated band. Sort alphabetically by band name.
@@ -194,7 +194,7 @@ SELECT product_name, price,
 		'Premium'
 	END
 FROM products
-ORDER BY product_name
+ORDER BY product_name;
 ```
 
 16. **Test products with unknown categories.** Use `EXCEPT` to find the non-null category IDs used by `testproducts` that are missing from `categories`. Return each of those IDs and the number of test products using it. Sort by category ID.
@@ -212,7 +212,7 @@ SELECT uc.category_id, COUNT(*) AS Number_of_products
 FROM unknown_categories uc
 JOIN testproducts ts ON uc.category_id = ts.category_id
 GROUP BY uc.category_id
-ORDER BY uc.category_id
+ORDER BY uc.category_id;
 ```
 
 ## Advanced
@@ -236,7 +236,7 @@ SELECT country,
 	   ROUND(AVG(value), 2) AS avg_value
 FROM country_order
 GROUP BY country
-ORDER BY AVG(value) DESC, country
+ORDER BY AVG(value) DESC, country;
 ```
 
 18. **Top three price ranks per category.** Within each category, assign rank 1 to the highest price and give equal prices the same rank without leaving gaps. Return category ID, category name, product ID, product name, price, and rank for the first three ranks. Use only priced products with a matching category. Sort by category ID, rank, then product ID.
@@ -261,6 +261,6 @@ SELECT category_id,
 	   rank
 FROM ranked_products
 WHERE rank <= 3
-ORDER BY category_id, rank, product_id
+ORDER BY category_id, rank, product_id;
 ```
 
